@@ -35,6 +35,9 @@ subprojects {
 	apply(plugin = "com.diffplug.spotless")
 
 	dependencies {
+		implementation("org.flywaydb:flyway-core")
+		implementation("org.flywaydb:flyway-mysql")
+		runtimeOnly("com.mysql:mysql-connector-j")
 		compileOnly("org.projectlombok:lombok")
 		annotationProcessor("org.projectlombok:lombok")
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -112,9 +115,11 @@ subprojects {
 		useJUnitPlatform()
 	}
 }
+
 project(":template-core") {
 	dependencies {
 		implementation("org.springframework.boot:spring-boot-starter-web")
+		implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	}
 }
 

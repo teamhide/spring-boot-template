@@ -4,12 +4,17 @@ plugins {
 	id("io.spring.dependency-management") version "1.1.7"
 	id("jacoco")
 	id("com.diffplug.spotless") version "6.20.0"
+	id("java-test-fixtures")
 }
 
 java {
 	toolchain {
 		languageVersion = JavaLanguageVersion.of(21)
 	}
+}
+
+tasks.bootJar {
+	mainClass = "com.teamhide.template.api.Application"
 }
 
 configurations {
@@ -33,6 +38,7 @@ subprojects {
 	apply(plugin = "io.spring.dependency-management")
 	apply(plugin = "jacoco")
 	apply(plugin = "com.diffplug.spotless")
+	apply(plugin = "java-test-fixtures")
 
 	dependencies {
 		implementation("org.flywaydb:flyway-core")
@@ -117,13 +123,29 @@ subprojects {
 }
 
 project(":template-core") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
 	dependencies {
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+		testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
+		testFixturesImplementation("org.junit.jupiter:junit-jupiter-api")
 	}
 }
 
 project(":template-api") {
+	tasks.bootJar {
+		enabled = true
+	}
+	tasks.jar {
+		enabled = true
+	}
+
 	dependencies {
 		implementation(project(":template-core"))
 		implementation(project(":template-domain"))
@@ -131,28 +153,54 @@ project(":template-api") {
 		implementation(project(":template-infra"))
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation("org.springframework.boot:spring-boot-starter-validation")
+
+		testImplementation(testFixtures(project(":template-core")))
 	}
 }
 
 project(":template-application") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
 	dependencies {
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation(project(":template-core"))
 		implementation(project(":template-domain"))
+
+		testImplementation(testFixtures(project(":template-core")))
 	}
 }
 
 project(":template-domain") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
 	dependencies {
 		implementation(project(":template-core"))
 		implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 		implementation("com.querydsl:querydsl-apt:5.0.0:jakarta")
+		implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
 		annotationProcessor("jakarta.annotation:jakarta.annotation-api")
 		annotationProcessor("jakarta.persistence:jakarta.persistence-api")
 	}
 }
 
 project(":template-infra") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
 	dependencies {
 		implementation(project(":template-domain"))
 		implementation(project(":template-core"))
@@ -160,7 +208,22 @@ project(":template-infra") {
 	}
 }
 
+project(":support") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+}
 project(":support:logging") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
 	dependencies {
 		implementation("io.sentry:sentry-logback:7.12.1")
 	}

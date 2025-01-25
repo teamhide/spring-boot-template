@@ -151,3 +151,9 @@ project(":template-infra") {
 		implementation(project(":template-application"))
 	}
 }
+
+project(":support:logging") {
+	dependencies {
+		implementation("io.sentry:sentry-logback:7.12.1")
+	}
+}

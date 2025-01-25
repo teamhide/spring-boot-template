@@ -1,4 +1,4 @@
-package com.teamhide.template.domain.board;
+package com.teamhide.template.domain.article.entity;
 
 import com.teamhide.template.domain.common.BaseEntity;
 import jakarta.persistence.Column;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "board")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
-public class Board extends BaseEntity {
+public class Article extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,7 +28,7 @@ public class Board extends BaseEntity {
     private String content;
 
     @Builder
-    public Board(final Long id, final String title, final String content) {
+    public Article(final Long id, final String title, final String content) {
         this.id = id;
         this.title = title;
         this.content = content;

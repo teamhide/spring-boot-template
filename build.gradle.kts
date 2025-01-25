@@ -122,6 +122,8 @@ project(":template-api") {
 	dependencies {
 		implementation(project(":template-core"))
 		implementation(project(":template-domain"))
+		implementation(project(":template-application"))
+		implementation(project(":template-infra"))
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation("org.springframework.boot:spring-boot-starter-validation")
 	}
@@ -129,6 +131,7 @@ project(":template-api") {
 
 project(":template-application") {
 	dependencies {
+		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation(project(":template-core"))
 		implementation(project(":template-domain"))
 	}

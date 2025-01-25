@@ -1,9 +1,16 @@
 package com.teamhide.template.api.common.exception;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import com.teamhide.template.core.exception.CommonErrorCodes;
 import com.teamhide.template.core.exception.CustomException;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,14 +34,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 class GlobalExceptionHandlerTest {
     public static class TestException extends CustomException {
         public TestException() {
@@ -57,8 +56,7 @@ class GlobalExceptionHandlerTest {
     }
 
     public class TestRequest {
-        @NotNull
-        private Long customerId;
+        @NotNull private Long customerId;
     }
 
     @RestController

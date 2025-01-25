@@ -22,14 +22,16 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ApiResponse<FailBody> handleHttpMessageNotReadableException(final HttpMessageNotReadableException e) {
+    public ApiResponse<FailBody> handleHttpMessageNotReadableException(
+            final HttpMessageNotReadableException e) {
         final CommonErrorCodes errorConst = CommonErrorCodes.HTTP_MESSAGE_NOT_READABLE;
         final FailBody body = new FailBody(errorConst.getErrorCode(), errorConst.getMessage());
         return ApiResponse.fail(body, errorConst.getStatusCode());
     }
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
-    public ApiResponse<FailBody> handleHttpRequestMethodNotSupportedException(final HttpRequestMethodNotSupportedException e) {
+    public ApiResponse<FailBody> handleHttpRequestMethodNotSupportedException(
+            final HttpRequestMethodNotSupportedException e) {
         final CommonErrorCodes errorConst = CommonErrorCodes.HTTP_REQUEST_METHOD_NOT_SUPPORTED;
         final FailBody body = new FailBody(errorConst.getErrorCode(), errorConst.getMessage());
         return ApiResponse.fail(body, errorConst.getStatusCode());

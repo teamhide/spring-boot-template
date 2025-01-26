@@ -2,7 +2,9 @@ package com.teamhide.template.api.article.controller.dto;
 
 import com.teamhide.template.domain.article.usecase.dto.CreateArticleRequestDto;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 
+@Getter
 public class CreateArticleRequest {
     @NotNull private String title;
 

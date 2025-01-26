@@ -1,10 +1,10 @@
 package com.teamhide.template.application.article.service;
 
-import com.teamhide.template.domain.article.entity.Article;
-import com.teamhide.template.domain.article.repository.ArticleRepository;
-import com.teamhide.template.domain.article.usecase.ArticleUseCase;
-import com.teamhide.template.domain.article.usecase.dto.ArticleDto;
-import com.teamhide.template.domain.article.usecase.dto.CreateArticleRequestDto;
+import com.teamhide.template.domain.article.Article;
+import com.teamhide.template.domain.article.ArticleRepository;
+import com.teamhide.template.domain.article.ArticleUseCase;
+import com.teamhide.template.domain.article.dto.ArticleDto;
+import com.teamhide.template.domain.article.dto.CreateArticleRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

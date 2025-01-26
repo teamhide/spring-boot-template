@@ -1,11 +1,11 @@
-package com.teamhide.template.domain.article.repository;
+package com.teamhide.template.persistence.article;
 
-import static com.teamhide.template.domain.article.entity.QArticle.article;
-import static com.teamhide.template.domain.article.entity.QComment.comment;
+import static com.teamhide.template.domain.article.QArticle.article;
+import static com.teamhide.template.domain.article.QComment.comment;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.teamhide.template.domain.article.repository.dto.ArticleDetail;
+import com.teamhide.template.domain.article.dto.ArticleDetail;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

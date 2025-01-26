@@ -1,6 +1,6 @@
-package com.teamhide.template.domain.article.entity;
+package com.teamhide.template.domain.article;
 
-import com.teamhide.template.domain.common.BaseEntity;
+import com.teamhide.template.domain.config.BaseEntity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

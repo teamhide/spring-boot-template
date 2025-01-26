@@ -1,6 +1,6 @@
 package com.teamhide.template.api.article.controller.dto;
 
-import com.teamhide.template.domain.article.usecase.dto.ArticleDto;
+import com.teamhide.template.domain.article.dto.ArticleDto;
 import lombok.Builder;
 
 @Builder

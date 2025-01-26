@@ -1,4 +1,4 @@
-package com.teamhide.template.domain.test;
+package com.teamhide.template.persistence.test;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

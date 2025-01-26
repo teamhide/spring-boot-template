@@ -5,10 +5,10 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 import com.teamhide.template.UnitTest;
-import com.teamhide.template.domain.article.entity.Article;
-import com.teamhide.template.domain.article.repository.ArticleRepository;
-import com.teamhide.template.domain.article.usecase.dto.ArticleDto;
-import com.teamhide.template.domain.article.usecase.dto.CreateArticleRequestDto;
+import com.teamhide.template.domain.article.Article;
+import com.teamhide.template.domain.article.ArticleRepository;
+import com.teamhide.template.domain.article.dto.ArticleDto;
+import com.teamhide.template.domain.article.dto.CreateArticleRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

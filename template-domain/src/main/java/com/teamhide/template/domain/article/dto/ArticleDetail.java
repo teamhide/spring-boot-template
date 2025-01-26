@@ -1,4 +1,4 @@
-package com.teamhide.template.domain.article.repository.dto;
+package com.teamhide.template.domain.article.dto;
 
 import java.time.LocalDateTime;
 import java.util.List;

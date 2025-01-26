@@ -1,4 +1,4 @@
-package com.teamhide.template.domain.article.usecase.dto;
+package com.teamhide.template.domain.article.dto;
 
 import lombok.Builder;
 

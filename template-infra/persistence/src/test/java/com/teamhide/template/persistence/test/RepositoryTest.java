@@ -1,4 +1,4 @@
-package com.teamhide.template.domain.test;
+package com.teamhide.template.persistence.test;
 
 import com.teamhide.template.core.database.DataSourceConfig;
 import java.lang.annotation.ElementType;

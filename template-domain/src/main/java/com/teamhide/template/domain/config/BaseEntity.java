@@ -1,4 +1,4 @@
-package com.teamhide.template.domain.common;
+package com.teamhide.template.domain.config;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;

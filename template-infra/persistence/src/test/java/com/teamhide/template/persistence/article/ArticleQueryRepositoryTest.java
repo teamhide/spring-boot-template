@@ -1,6 +1,6 @@
-package com.teamhide.template.domain.article.repository;
+package com.teamhide.template.persistence.article;
 
-import com.teamhide.template.domain.test.RepositoryTest;
+import com.teamhide.template.persistence.test.RepositoryTest;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

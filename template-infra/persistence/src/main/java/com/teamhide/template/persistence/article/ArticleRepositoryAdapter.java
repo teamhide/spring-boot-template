@@ -1,6 +1,7 @@
-package com.teamhide.template.domain.article.repository;
+package com.teamhide.template.persistence.article;
 
-import com.teamhide.template.domain.article.entity.Article;
+import com.teamhide.template.domain.article.Article;
+import com.teamhide.template.domain.article.ArticleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

@@ -150,7 +150,8 @@ project(":template-api") {
 		implementation(project(":template-core"))
 		implementation(project(":template-domain"))
 		implementation(project(":template-application"))
-		implementation(project(":template-infra"))
+		implementation(project(":template-infra:infra"))
+		implementation(project(":template-infra:persistence"))
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation("org.springframework.boot:spring-boot-starter-validation")
 
@@ -205,6 +206,38 @@ project(":template-infra") {
 		implementation(project(":template-domain"))
 		implementation(project(":template-core"))
 		implementation(project(":template-application"))
+	}
+}
+
+project(":template-infra:infra") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
+	dependencies {
+		implementation(project(":template-core"))
+	}
+}
+
+project(":template-infra:persistence") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
+	dependencies {
+		implementation(project(":template-domain"))
+		implementation(project(":template-core"))
+		implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+		implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
+		annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jakarta")
+		annotationProcessor("jakarta.annotation:jakarta.annotation-api")
+		annotationProcessor("jakarta.persistence:jakarta.persistence-api")
 	}
 }
 

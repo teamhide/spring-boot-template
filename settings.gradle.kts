@@ -11,3 +11,5 @@ include("template-infra:infra")
 findProject(":template-infra:infra")?.name = "infra"
 include("template-infra:persistence")
 findProject(":template-infra:persistence")?.name = "persistence"
+include("support:migration")
+findProject(":support:migration")?.name = "migration"

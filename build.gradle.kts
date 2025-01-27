@@ -148,6 +148,7 @@ project(":template-api") {
 		implementation(project(":template-application"))
 		implementation(project(":template-infra:infra"))
 		implementation(project(":template-infra:persistence"))
+		implementation(project(":support:migration"))
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation("org.springframework.boot:spring-boot-starter-validation")
 
@@ -231,8 +232,6 @@ project(":template-infra:persistence") {
 		implementation(project(":template-core"))
 		implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 		implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
-		implementation("org.flywaydb:flyway-core")
-		implementation("org.flywaydb:flyway-mysql")
 		runtimeOnly("com.mysql:mysql-connector-j")
 		annotationProcessor("com.querydsl:querydsl-apt:5.0.0:jakarta")
 		annotationProcessor("jakarta.annotation:jakarta.annotation-api")
@@ -259,5 +258,19 @@ project(":support:logging") {
 
 	dependencies {
 		implementation("io.sentry:sentry-logback:7.12.1")
+	}
+}
+
+project(":support:migration") {
+	tasks.bootJar {
+		enabled = false
+	}
+	tasks.jar {
+		enabled = true
+	}
+
+	dependencies {
+		implementation("org.flywaydb:flyway-core")
+		implementation("org.flywaydb:flyway-mysql")
 	}
 }

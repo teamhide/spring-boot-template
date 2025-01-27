@@ -192,31 +192,24 @@ project(":template-domain") {
 }
 
 project(":template-infra") {
-	tasks.bootJar {
-		enabled = false
-	}
-	tasks.jar {
-		enabled = true
-	}
+	subprojects {
+		tasks.bootJar {
+			enabled = false
+		}
+		tasks.jar {
+			enabled = true
+		}
 
-	dependencies {
-		implementation(project(":template-domain"))
-		implementation(project(":template-core"))
-		implementation(project(":template-application"))
+		dependencies {
+			implementation(project(":template-domain"))
+			implementation(project(":template-core"))
+			implementation(project(":template-application"))
+		}
 	}
 }
 
 project(":template-infra:persistence") {
-	tasks.bootJar {
-		enabled = false
-	}
-	tasks.jar {
-		enabled = true
-	}
-
 	dependencies {
-		implementation(project(":template-domain"))
-		implementation(project(":template-core"))
 		implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 		implementation("com.querydsl:querydsl-jpa:5.0.0:jakarta")
 		runtimeOnly("com.mysql:mysql-connector-j")
@@ -226,49 +219,45 @@ project(":template-infra:persistence") {
 	}
 }
 
-project(":template-infra:clients:pg") {
-	tasks.bootJar {
-		enabled = false
-	}
-	tasks.jar {
-		enabled = true
-	}
+project(":template-infra:clients") {
+	subprojects {
+		tasks.bootJar {
+			enabled = false
+		}
+		tasks.jar {
+			enabled = true
+		}
 
+		dependencies {
+			testFixturesImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
+		}
+	}
+}
+
+project(":template-infra:clients:pg") {
 	dependencies {
 		implementation("org.springframework.boot:spring-boot-starter-web")
 	}
 }
 
 project(":support") {
-	tasks.bootJar {
-		enabled = false
-	}
-	tasks.jar {
-		enabled = true
+	subprojects {
+		tasks.bootJar {
+			enabled = false
+		}
+		tasks.jar {
+			enabled = true
+		}
 	}
 }
 
 project(":support:logging") {
-	tasks.bootJar {
-		enabled = false
-	}
-	tasks.jar {
-		enabled = true
-	}
-
 	dependencies {
 		implementation("io.sentry:sentry-logback:7.12.1")
 	}
 }
 
 project(":support:migration") {
-	tasks.bootJar {
-		enabled = false
-	}
-	tasks.jar {
-		enabled = true
-	}
-
 	dependencies {
 		implementation("org.flywaydb:flyway-core")
 		implementation("org.flywaydb:flyway-mysql")

@@ -16,6 +16,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpInputMessage;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -33,6 +34,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.resource.NoResourceFoundException;
 
 class GlobalExceptionHandlerTest {
     public static class TestException extends CustomException {
@@ -108,6 +110,21 @@ class GlobalExceptionHandlerTest {
 
         @GetMapping("/method-argument-type-mismatch/{vendorId}")
         public void methodArgumentTypeMismatch(@PathVariable("vendorId") final Long vendorId) {}
+
+        @GetMapping("/illegal-argument")
+        public void methodIllegalArgument() {
+            throw new IllegalArgumentException();
+        }
+
+        @GetMapping("/illegal-state")
+        public void methodIllegalState() {
+            throw new IllegalStateException();
+        }
+
+        @GetMapping("/no-resource-found")
+        public void methodNoResourceFound() throws NoResourceFoundException {
+            throw new NoResourceFoundException(HttpMethod.GET, "");
+        }
     }
 
     MockMvc mockMvc;
@@ -168,6 +185,39 @@ class GlobalExceptionHandlerTest {
                 .andExpect(
                         jsonPath("message")
                                 .value(CommonErrorCodes.HTTP_REQUEST_METHOD_NOT_SUPPORTED.getMessage()));
+    }
+
+    @Test
+    @DisplayName("NoResourceFoundException 예외가 발생하면 정의한 응답 코드와 에러 메시지가 출력된다")
+    void testHandleNoResourceFoundException() throws Exception {
+        // Given, When, then
+        mockMvc
+                .perform(get("/no-resource-found").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound())
+                .andExpect(jsonPath("errorCode").value(CommonErrorCodes.NO_RESOURCE_FOUND.getErrorCode()))
+                .andExpect(jsonPath("message").value(CommonErrorCodes.NO_RESOURCE_FOUND.getMessage()));
+    }
+
+    @Test
+    @DisplayName("IllegalArgumentException 예외가 발생하면 정의한 응답 코드와 에러 메시지가 출력된다")
+    void testIllegalArgumentException() throws Exception {
+        // Given, When, then
+        mockMvc
+                .perform(get("/illegal-argument").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("errorCode").value(CommonErrorCodes.ILLEGAL_ARGUMENT.getErrorCode()))
+                .andExpect(jsonPath("message").value(CommonErrorCodes.ILLEGAL_ARGUMENT.getMessage()));
+    }
+
+    @Test
+    @DisplayName("IllegalStateException 예외가 발생하면 정의한 응답 코드와 에러 메시지가 출력된다")
+    void testIllegalStateException() throws Exception {
+        // Given, When, then
+        mockMvc
+                .perform(get("/illegal-state").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("errorCode").value(CommonErrorCodes.ILLEGAL_STATE.getErrorCode()))
+                .andExpect(jsonPath("message").value(CommonErrorCodes.ILLEGAL_STATE.getMessage()));
     }
 
     @Test

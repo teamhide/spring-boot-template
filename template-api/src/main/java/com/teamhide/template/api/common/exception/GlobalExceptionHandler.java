@@ -46,7 +46,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(NoResourceFoundException.class)
     public ApiResponse<FailBody> handleNoResourceFoundException(final NoResourceFoundException e) {
-        final CommonErrorCodes errorConst = CommonErrorCodes.AUTHENTICATION_ERROR;
+        final CommonErrorCodes errorConst = CommonErrorCodes.NO_RESOURCE_FOUND;
         final FailBody body = new FailBody(errorConst.getErrorCode(), errorConst.getMessage());
         return ApiResponse.fail(body, errorConst.getStatusCode());
     }

@@ -16,6 +16,7 @@ public enum CommonErrorCodes {
     AUTHENTICATION_ERROR("AUTHENTICATION_ERROR", "Authentication error", HttpStatus.UNAUTHORIZED),
     NO_HANDLER_FOUND("NO_HANDLER_FOUND", "No endpoint GET URL", HttpStatus.NOT_FOUND),
     UNKNOWN("UNKNOWN", "Unknown", HttpStatus.INTERNAL_SERVER_ERROR),
+    NO_RESOURCE_FOUND("NO_RESOURCE_FOUND", "No resource found", HttpStatus.NOT_FOUND),
     ILLEGAL_ARGUMENT("ILLEGAL_ARGUMENT", "Illegal argument", HttpStatus.BAD_REQUEST),
     ILLEGAL_STATE("ILLEGAL_STATE", "Illegal state", HttpStatus.BAD_REQUEST);
 

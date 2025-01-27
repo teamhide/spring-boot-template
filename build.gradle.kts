@@ -148,7 +148,7 @@ project(":template-api") {
 		implementation(project(":template-application"))
 		implementation(project(":template-infra:persistence"))
 		implementation(project(":support:migration"))
-		implementation(project(":template-infra:pg-client"))
+		implementation(project(":template-infra:clients:pg"))
 		implementation("org.springframework.boot:spring-boot-starter-web")
 		implementation("org.springframework.boot:spring-boot-starter-validation")
 
@@ -226,7 +226,7 @@ project(":template-infra:persistence") {
 	}
 }
 
-project(":template-infra:pg-client") {
+project(":template-infra:clients:pg") {
 	tasks.bootJar {
 		enabled = false
 	}

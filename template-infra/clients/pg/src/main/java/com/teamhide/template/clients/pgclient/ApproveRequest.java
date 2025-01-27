@@ -1,4 +1,4 @@
-package com.teamhide.template.pgclient;
+package com.teamhide.template.clients.pgclient;
 
 import lombok.Getter;
 

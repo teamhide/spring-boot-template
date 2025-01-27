@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
             "com.teamhide.template.domain",
             "com.teamhide.template.core",
             "com.teamhide.template.persistence",
+            "com.teamhide.template.clients",
         })
 public class Application {
 

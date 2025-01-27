@@ -1,4 +1,4 @@
-package com.teamhide.template.pgclient;
+package com.teamhide.template.clients.pgclient;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;

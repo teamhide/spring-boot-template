@@ -1,4 +1,4 @@
-package com.teamhide.template.core.database;
+package com.teamhide.template.persistence.config.database;
 
 import com.zaxxer.hikari.HikariDataSource;
 import java.util.HashMap;

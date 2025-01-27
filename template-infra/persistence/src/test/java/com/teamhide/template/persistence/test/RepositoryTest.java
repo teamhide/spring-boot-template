@@ -1,6 +1,6 @@
 package com.teamhide.template.persistence.test;
 
-import com.teamhide.template.core.database.DataSourceConfig;
+import com.teamhide.template.persistence.config.database.DataSourceConfig;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

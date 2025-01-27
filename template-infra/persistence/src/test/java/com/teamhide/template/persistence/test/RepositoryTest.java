@@ -14,7 +14,7 @@ import org.springframework.test.context.ActiveProfiles;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @DataJpaTest
-@ActiveProfiles("domain")
+@ActiveProfiles("persistence-test")
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ImportAutoConfiguration(DataSourceConfig.class)
 @Import(RepositoryTestConfig.class)

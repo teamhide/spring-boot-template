@@ -1,16 +1,4 @@
-server:
-  port: 8080
-  deploy-version: 1.0.0
 spring:
-  profiles:
-    group:
-      default: domain, application, core, infra, support
-      test: domain-test, application-test, core-test, infra-test, support-test
-      prod: domain-prod, application-prod, core-prod, infra-prod, support-prod
-  mvc:
-    static-path-pattern: /test/**
-  main:
-    banner-mode: off
   datasource:
     writer:
       hikari:
@@ -44,10 +32,3 @@ spring:
     redis:
       host: localhost
       port: 63792
-logging:
-  level:
-    org.springframework.kafka.*: OFF
-    org.springframework.kafka.listener.[KafkaMessageListenerContainer$ListenerConsumer]: OFF
-    org.apache.kafka.*: OFF
-    kafka.*: OFF
-    org.apache.zookeeper.*: OFF

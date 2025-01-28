@@ -227,16 +227,20 @@ project(":template-infra:clients") {
 		tasks.jar {
 			enabled = true
 		}
+	}
 
-		dependencies {
-			testFixturesImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
-		}
+	dependencies {
+		testFixturesImplementation("org.springframework.boot:spring-boot-starter-test")
+		testFixturesImplementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.2.0")
+		testFixturesImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
 	}
 }
 
 project(":template-infra:clients:pg") {
 	dependencies {
+		implementation(project(":template-infra:clients"))
 		implementation("org.springframework.boot:spring-boot-starter-web")
+		testImplementation(testFixtures(project(":template-infra:clients")))
 	}
 }
 

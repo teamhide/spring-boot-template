@@ -9,7 +9,7 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
 public class PgClientFactory {
-    @Value("clients.pg-client.base-url")
+    @Value("${clients.pg-client.base-url}")
     private String baseUrl;
 
     @Bean

@@ -10,6 +10,11 @@ public class CreateArticleRequest {
 
     @NotNull private String content;
 
+    public CreateArticleRequest(final String title, final String content) {
+        this.title = title;
+        this.content = content;
+    }
+
     public CreateArticleRequestDto toRequestDto() {
         return CreateArticleRequestDto.builder().title(title).content(content).build();
     }

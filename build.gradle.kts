@@ -155,6 +155,7 @@ project(":template-api") {
 		implementation("org.springframework.boot:spring-boot-starter-validation")
 
 		testImplementation(testFixtures(project(":template-core")))
+		testImplementation("org.springframework.boot:spring-boot-starter-jdbc")
 	}
 }
 

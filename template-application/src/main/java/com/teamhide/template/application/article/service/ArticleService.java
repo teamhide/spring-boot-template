@@ -7,12 +7,14 @@ import com.teamhide.template.domain.article.dto.ArticleDto;
 import com.teamhide.template.domain.article.dto.CreateArticleRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
 public class ArticleService implements ArticleUseCase {
     private final ArticleRepository articleRepository;
 
+    @Transactional
     @Override
     public ArticleDto createArticle(final CreateArticleRequestDto requestDto) {
         final Article article =

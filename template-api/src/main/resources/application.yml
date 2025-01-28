@@ -3,9 +3,9 @@ server:
 spring:
   profiles:
     group:
-      default: domain, application, core, persistence, support-migration, client
-      test: domain-test, application-test, core-test, persistence-test, support-migration-test, client-test
-      prod: domain-prod, application-prod, core-prod, persistence-prod, support-migration-prod, client-prod
+      default: domain, application, core, persistence, support-migration, clients
+      test: domain-test, application-test, core-test, persistence-test, support-migration-test, clients-test
+      prod: domain-prod, application-prod, core-prod, persistence-prod, support-migration-prod, clients-prod
   mvc:
     static-path-pattern: /test/**
   main:

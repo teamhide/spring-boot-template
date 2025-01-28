@@ -41,9 +41,11 @@ subprojects {
 	apply(plugin = "java-test-fixtures")
 
 	dependencies {
+		implementation("org.springframework.cloud:spring-cloud-starter-contract-stub-runner:4.2.0")
 		compileOnly("org.projectlombok:lombok")
 		annotationProcessor("org.projectlombok:lombok")
 		testImplementation("org.springframework.boot:spring-boot-starter-test")
+		testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
 		testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	}
 

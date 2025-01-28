@@ -1,11 +1,13 @@
 package com.teamhide.template.domain.article;
 
 import com.teamhide.template.domain.config.BaseEntity;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -21,15 +23,20 @@ public class Comment extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "article_id")
-    private Long articleId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "article_id", nullable = false)
+    private Article article;
 
     private String content;
 
     @Builder
-    public Comment(final Long id, final Long articleId, final String content) {
+    public Comment(final Long id, final Article article, final String content) {
         this.id = id;
-        this.articleId = articleId;
+        this.article = article;
         this.content = content;
+    }
+
+    public void setArticle(final Article article) {
+        this.article = article;
     }
 }

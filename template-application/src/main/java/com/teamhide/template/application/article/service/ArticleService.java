@@ -1,8 +1,11 @@
 package com.teamhide.template.application.article.service;
 
+import com.teamhide.template.core.exception.ErrorCodes;
+import com.teamhide.template.core.exception.NotFoundException;
 import com.teamhide.template.domain.article.Article;
 import com.teamhide.template.domain.article.ArticleRepository;
 import com.teamhide.template.domain.article.ArticleUseCase;
+import com.teamhide.template.domain.article.dto.ArticleDetail;
 import com.teamhide.template.domain.article.dto.ArticleDto;
 import com.teamhide.template.domain.article.dto.CreateArticleRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -25,5 +28,13 @@ public class ArticleService implements ArticleUseCase {
                 .title(savedArticle.getTitle())
                 .content(savedArticle.getContent())
                 .build();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public ArticleDetail getArticle(final Long articleId) {
+        return articleRepository
+                .findById(articleId)
+                .orElseThrow(() -> new NotFoundException(ErrorCodes.ARTICLE_NOT_FOUND));
     }
 }

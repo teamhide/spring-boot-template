@@ -156,6 +156,7 @@ project(":template-api") {
 
 		testImplementation(testFixtures(project(":template-core")))
 		testImplementation("org.springframework.boot:spring-boot-starter-jdbc")
+		testImplementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	}
 }
 
@@ -208,6 +209,7 @@ project(":template-infra") {
 			implementation(project(":template-domain"))
 			implementation(project(":template-core"))
 			implementation(project(":template-application"))
+			testImplementation(testFixtures(project(":template-core")))
 		}
 	}
 }

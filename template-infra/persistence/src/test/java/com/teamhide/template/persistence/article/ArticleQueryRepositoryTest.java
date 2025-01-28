@@ -1,17 +1,13 @@
 package com.teamhide.template.persistence.article;
 
 import com.teamhide.template.persistence.test.RepositoryTest;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 
 @RepositoryTest
-@Import(ArticleQueryRepository.class)
+@Import({ArticleQueryRepository.class})
 class ArticleQueryRepositoryTest {
     @Autowired private ArticleQueryRepository articleQueryRepository;
-
-    @Test
-    @DisplayName("댓글과 함께 글을 조회한다")
-    void testFindDetailById() {}
+    @Autowired private ArticleJpaRepository articleJpaRepository;
+    @Autowired private CommentJpaRepository commentJpaRepository;
 }

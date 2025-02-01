@@ -31,10 +31,10 @@ public class DataSourceConfig {
     @Bean
     @DependsOn({"writerDataSource", "readerDataSource"})
     public DataSource routingDataSource(
-            @Qualifier("writerDataSource") DataSource writerDataSource,
-            @Qualifier("readerDataSource") DataSource readerDataSource) {
-        RoutingDataSource routingDataSource = new RoutingDataSource();
-        HashMap<Object, Object> dataSourceMap = new HashMap<>();
+            @Qualifier("writerDataSource") final DataSource writerDataSource,
+            @Qualifier("readerDataSource") final DataSource readerDataSource) {
+        final RoutingDataSource routingDataSource = new RoutingDataSource();
+        final HashMap<Object, Object> dataSourceMap = new HashMap<>();
         dataSourceMap.put(DataSourceType.WRITER, writerDataSource);
         dataSourceMap.put(DataSourceType.READER, readerDataSource);
 
@@ -46,7 +46,7 @@ public class DataSourceConfig {
 
     @Primary
     @Bean
-    public DataSource dataSource(@Qualifier("routingDataSource") DataSource routingDataSource) {
+    public DataSource dataSource(@Qualifier("routingDataSource") final DataSource routingDataSource) {
         return new LazyConnectionDataSourceProxy(routingDataSource);
     }
 }
